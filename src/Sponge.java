@@ -33,9 +33,34 @@ public class Sponge {
 
   // Implement your solution here!
   public static String spongeCase(String sentence) {
-    return null;
+    String[] words = sentence.split(" "); 
+    String result = "";
+
+    for (String word : words) {
+      result += spongeWord(word); 
+      result += " "; 
+    }
+
+    return result.strip(); 
   }
 
+  public static String spongeWord(String word) {
+    String result = ""; 
+    boolean lowerCase = true; 
+
+    for (char letter : word.toCharArray())
+    {
+      if (lowerCase) {
+        result += Character.toLowerCase(letter); 
+      } else {
+        result += Character.toUpperCase(letter); 
+      }
+
+      lowerCase = !lowerCase; 
+    }
+
+    return result;
+  }
 
   // Method to help with testing, you do not need to read this.
   public static void assertEqual(int testNumber, String actual, String expected) {
