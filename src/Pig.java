@@ -26,16 +26,36 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-        return null;
+        // String[] to split sentence by " "
+        String[] words = sentence.split(" ");
+        String result = "";  
+        // String result as ""
+        
+        // for word of words 
+            // use helper function to add changes to the result
+            // add space to result
+        for (String word : words) { 
+            result += pigConverter(word); // method
+            result += " ";  
+        }
+
+        return result.trim(); 
     }
 
+    private static String pigConverter(String word) {
+        // assuming the words are lower case
+        if (word.startsWith("a") || word.startsWith("e") || word.startsWith("i") || word.startsWith("o") || word.startsWith("u")) {
+            return word; 
+        }
 
+        char firstLetter = word.charAt(0); 
+        word = word.substring(1); 
 
+        word += firstLetter; 
+        word += "ay";
 
-
-
-
-
+        return word; 
+    }
 
     // Method to help with testing, you do not need to read this.
     public static void assertEqual(int testNumber, String actual, String expected) {
